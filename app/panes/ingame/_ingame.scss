@@ -1,0 +1,21 @@
+.ennemies {
+  display: flex;
+  flex-direction: column;
+}
+
+.ennemy {
+  flex: 0 0 50%;
+  display: flex;
+}
+
+.summoner {
+  img {
+    display: block;
+  }
+}
+
+.spells {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}

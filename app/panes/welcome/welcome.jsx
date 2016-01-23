@@ -9,7 +9,7 @@ export default class Welcome extends Component {
       <section className={this.sectionClasses()}>
         <h1>Welcome summoner</h1>
         <form onSubmit={::this.handleSubmit}>
-          <input ref="summonerInput" placeholder="Enter a summoner's name" required />
+          <input ref="summonerInput" placeholder="Enter a summoner's name" required defaultValue="ngrygod" />
           <button>Search</button>
         </form>
       </section>

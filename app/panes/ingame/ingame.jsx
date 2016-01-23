@@ -31,12 +31,12 @@ export default class InGame extends Component {
 
   renderEnnemy(ennemy) {
     return (
-      <li key={ennemy.id}>
-        <figure>
+      <li key={ennemy.id} className="ennemy">
+        <figure className="summoner">
           <img src={ennemy.champion.icon} />
           <figcation>{ennemy.name}</figcation>
         </figure>
-        <ul>{ennemy.spells.map(::this.renderSpell)}</ul>
+        <ul className="spells">{ennemy.spells.map(::this.renderSpell)}</ul>
       </li>
     )
   }
@@ -45,7 +45,7 @@ export default class InGame extends Component {
     const ennemies = this.state.ennemies
     return (
       <section className={this.sectionClasses()}>
-        <ul>{ennemies.map(::this.renderEnnemy)}</ul>
+        <ul className="ennemies">{ennemies.map(::this.renderEnnemy)}</ul>
         <Timer ennemies={this.state.ennemies} />
         <VoiceController />
       </section>

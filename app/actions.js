@@ -26,11 +26,13 @@ export function loadEnnemies(summoner) {
   ])
   .then(ennemies => ennemies.map(ennemy => {
     ennemy.champion = Champions.find(champion => champion.id === ennemy.champion)
-    ennemy.spells = ennemy.spells.map(spell =>
-      Object.assign({
-        key: Uuid.v1()
-      }, Spells.find(refSpell => refSpell.id === spell.id))
-    )
+    ennemy.spells = ennemy.spells.map(spell => {
+      const refSpell = Spells.find(refSpell => refSpell.id === spell.id)
+      return Object.assign({}, refSpell, {
+        key: Uuid.v1(),
+        cooldown: spell.cooldown
+      })
+    })
     return ennemy
   }))
   .then(ennemies => Store.ennemies = ennemies)
