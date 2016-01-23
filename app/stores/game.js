@@ -13,7 +13,8 @@ export default class GameStore extends Store {
 
     this.state = {
       ennemies: [],
-      spells: []
+      spells: [],
+      warningSpells: []
     }
   }
 
@@ -29,7 +30,11 @@ export default class GameStore extends Store {
   }
 
   handleDecrementSpellCooldowns(spells) {
-    this.setState({ spells })
+    const warningSpells = spells
+    .filter((spell) => 0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown)
+    .sort((spell1, spell2) => spell1.cooldown - spell2.cooldown)
+
+    this.setState({ spells, warningSpells })
   }
 
   handleResetSpellCooldown(newSpell) {
@@ -40,14 +45,5 @@ export default class GameStore extends Store {
     })
 
     this.setState({ spells })
-  }
-
-  getEnnemies() {
-    const ennemies = this.state.ennemies.map((ennemy) =>
-      Object.assign({
-        spells: this.state.spells.filter((spell) => spell.ennemyKey === ennemy.key)
-      }, ennemy)
-    )
-    return ennemies
   }
 }

@@ -3,7 +3,7 @@ import Mixin from 'react-mixin'
 import Pane from '../../mixins/pane'
 import State from '../../mixins/state'
 import EnnemiesList from '../../components/ennemies_list.jsx'
-import Timer from '../../components/timer.jsx'
+import WarningSpeech from '../../components/warning_speech.jsx'
 import VoiceController from '../../components/voice_controller.jsx'
 
 export default class InGame extends Component {
@@ -12,7 +12,8 @@ export default class InGame extends Component {
 
     this.state = {
       ennemies: [],
-      spells: []
+      spells: [],
+      warningSpells: []
     }
   }
 
@@ -24,23 +25,20 @@ export default class InGame extends Component {
     this.setState(this.store.state)
   }
 
-  render() {
-    const ennemies = this.state.ennemies
-    const spells = this.state.spells
+  componentDidUpdate() {
+    if (0 !== this.state.spells.length && null == this.intervalId)
+      this.intervalId = setInterval(::this.tick, 1000)
+  }
 
+  render() {
     return (
       <section className={this.sectionClasses()}>
         <EnnemiesList
-          ennemies={ennemies}
-          spells={spells}
+          ennemies={this.state.ennemies}
+          spells={this.state.spells}
           onSpellClick={::this.handleSpellClick} />
 
-        <Timer
-          spells={spells}
-          onTick={::this.handleTick}
-          on60sMark={::this.handle60sMark}
-          on30sMark={::this.handle30sMark} />
-
+        <WarningSpeech monitor={this.state.warningSpells} />
         <VoiceController />
       </section>
     )
@@ -50,16 +48,8 @@ export default class InGame extends Component {
     this.spellActions.resetCooldown(spell)
   }
 
-  handleTick() {
+  tick() {
     this.spellActions.decrementCooldowns(this.state.spells)
-  }
-
-  handle60sMark() {
-
-  }
-
-  handle30sMark() {
-
   }
 }
 
