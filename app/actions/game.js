@@ -25,17 +25,6 @@ export default class GameActions extends Actions {
     })
   }
 
-  decrementSpellCooldowns(spells) {
-    spells.forEach((spell) => spell.cooldown--)
-    return spells
-  }
-
-  resetSpellCooldown(spell) {
-    const spellDef = Spells.find((spellDef) => spellDef.id === spell.id)
-    spell.cooldown = spellDef.cooldown
-    return spell
-  }
-
   // const API_KEY = '81d00796-d2a2-4e8e-b112-2c20c7ef60c0'
   // const API_URL = 'https://euw.api.pvp.net'
 

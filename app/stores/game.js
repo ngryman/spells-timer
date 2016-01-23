@@ -6,8 +6,10 @@ export default class GameStore extends Store {
 
     const userActionIds = flux.getActionIds('game')
     this.register(userActionIds.loadInfos, this.handleLoadInfos)
-    this.register(userActionIds.decrementSpellCooldowns, this.handleDecrementSpellCooldowns)
-    this.register(userActionIds.resetSpellCooldown, this.handleResetSpellCooldown)
+
+    const spellActionIds = flux.getActionIds('spell')
+    this.register(spellActionIds.decrementCooldowns, this.handleDecrementSpellCooldowns)
+    this.register(spellActionIds.resetCooldown, this.handleResetSpellCooldown)
 
     this.state = {
       ennemies: [],

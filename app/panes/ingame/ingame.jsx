@@ -4,7 +4,6 @@ import Pane from '../../mixins/pane'
 import State from '../../mixins/state'
 import EnnemiesList from '../../components/ennemies_list.jsx'
 import Timer from '../../components/timer.jsx'
-import Alert from '../../components/alert.jsx'
 import VoiceController from '../../components/voice_controller.jsx'
 
 export default class InGame extends Component {
@@ -19,7 +18,7 @@ export default class InGame extends Component {
 
   componentWillMount() {
     this.store = this.context.flux.getStore('game')
-    this.actions = this.context.flux.getActions('game')
+    this.spellActions = this.context.flux.getActions('spell')
 
     this.store.addListener('change', () => this.setState(this.store.state))
     this.setState(this.store.state)
@@ -48,11 +47,11 @@ export default class InGame extends Component {
   }
 
   handleSpellClick(spell) {
-    this.actions.resetSpellCooldown(spell)
+    this.spellActions.resetCooldown(spell)
   }
 
   handleTick() {
-    this.actions.decrementSpellCooldowns(this.state.spells)
+    this.spellActions.decrementCooldowns(this.state.spells)
   }
 
   handle60sMark() {
