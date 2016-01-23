@@ -38,7 +38,7 @@ export default class InGame extends Component {
           spells={this.state.spells}
           onSpellClick={::this.handleSpellClick} />
 
-        <WarningSpeech monitor={this.state.warningSpells} />
+        <WarningSpeech monitorSpells={this.state.warningSpells} />
         <VoiceController />
       </section>
     )

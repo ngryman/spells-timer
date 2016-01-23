@@ -19,8 +19,6 @@ export default class GameActions extends Actions {
     }))
     .then((gameInfos) => {
       gameInfos.ennemies[0].spells[0].cooldown = 2
-      gameInfos.ennemies[1].spells[1].cooldown = 32
-      gameInfos.ennemies[3].spells[1].cooldown = 16
       return gameInfos
     })
   }
@@ -70,6 +68,6 @@ const createSpell = (spellId, ennemyKey) => {
     key: Uuid.v1(),
     ennemyKey
   }, spellDef, {
-    cooldown: 90
+    cooldown: spellDef.cooldown
   })
 }

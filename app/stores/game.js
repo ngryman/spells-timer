@@ -46,4 +46,10 @@ export default class GameStore extends Store {
 
     this.setState({ spells })
   }
+
+  getEnnemyBySpell(spell) {
+    return this.state.ennemies.find(
+      (ennemy) => ennemy.key === spell.ennemyKey
+    )
+  }
 }
