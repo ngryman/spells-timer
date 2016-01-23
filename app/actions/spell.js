@@ -8,8 +8,11 @@ export default class SpellActions extends Actions {
   }
 
   resetCooldown(spell) {
+    if (spell.cooldown > 0) return
+
     const spellDef = Spells.find((spellDef) => spellDef.id === spell.id)
     spell.cooldown = spellDef.cooldown
+
     return spell
   }
 }
