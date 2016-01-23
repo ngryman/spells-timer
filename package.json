@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:sass": "node-sass sass/index.scss --output-style compressed --source-map-embed --output www",
-    "build:app": "browserify app/index.jsx -t [ babelify --presets [ es2015 react stage-0 ] ] --debug -o www/index.js",
+    "build:app": "browserify app/index.jsx -t [ babelify --presets [ es2015 react stage-0 ] ] --debug --sourceMapRelative -o www/index.js",
     "build": "npm run build:sass -s; npm run build:app -s",
     "watch:sass": "npm run build:sass -s -- --watch --recursive",
     "watch:app": "watchify app/index.jsx -t [ babelify --presets [ es2015 react stage-0 ] ] --debug -o www/index.js",
@@ -17,7 +17,6 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
@@ -28,6 +27,7 @@
     "classnames": "^2.2.3",
     "clj-fuzzy": "^0.3.1",
     "eventemitter3": "^1.1.1",
+    "flummox": "^3.6.8",
     "lol-champions": "^0.3.0",
     "lol-spells": "^0.1.0",
     "node-sass": "^3.4.2",

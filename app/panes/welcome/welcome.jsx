@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Mixin from 'react-mixin'
-import Pane from '../../mixins/pane.js'
-import { loadSummoner, loadEnnemies } from '../../actions'
+import Pane from '../../mixins/pane'
+import State from '../../mixins/state'
 
 export default class Welcome extends Component {
   render() {
@@ -19,8 +19,12 @@ export default class Welcome extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    loadSummoner(this.refs.summonerInput.value)
-    .then(loadEnnemies)
+    const summonerName = this.refs.summonerInput.value
+    const user = this.context.flux.getActions('user')
+    const game = this.context.flux.getActions('game')
+
+    user.loadSummoner()
+    .then(game.loadInfos)
     .then(() => {
       this.context.navigate('InGame')
     })
@@ -28,3 +32,4 @@ export default class Welcome extends Component {
 }
 
 Mixin.onClass(Welcome, Pane)
+Mixin.onClass(Welcome, State)

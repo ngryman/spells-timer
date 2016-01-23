@@ -1,56 +1,68 @@
 import React, { Component } from 'react'
 import Mixin from 'react-mixin'
 import Pane from '../../mixins/pane'
-import Hub from '../../hub'
-import Spell from '../../components/spell/spell.jsx'
-import Timer from '../../components/timer/timer.jsx'
-import VoiceController from '../../components/voice_controller/voice_controller.jsx'
+import State from '../../mixins/state'
+import EnnemiesList from '../../components/ennemies_list.jsx'
+import Timer from '../../components/timer.jsx'
+import Alert from '../../components/alert.jsx'
+import VoiceController from '../../components/voice_controller.jsx'
 
 export default class InGame extends Component {
   constructor() {
     super()
 
     this.state = {
-      ennemies: []
+      ennemies: [],
+      spells: []
     }
   }
 
-  componentDidMount() {
-    Hub.on('ennemies', (ennemies) => {
-      this.setState({ ennemies })
-    })
+  componentWillMount() {
+    this.store = this.context.flux.getStore('game')
+    this.actions = this.context.flux.getActions('game')
 
-    Hub.on('spells_cooldown', (ennemies) => {
-      this.setState({ ennemies })
-    })
-  }
-
-  renderSpell(spell) {
-    return <Spell key={spell.id} spell={spell} />
-  }
-
-  renderEnnemy(ennemy) {
-    return (
-      <li key={ennemy.id} className="ennemy">
-        <figure className="summoner">
-          <img src={ennemy.champion.icon} />
-          <figcation>{ennemy.name}</figcation>
-        </figure>
-        <ul className="spells">{ennemy.spells.map(::this.renderSpell)}</ul>
-      </li>
-    )
+    this.store.addListener('change', () => this.setState(this.store.state))
+    this.setState(this.store.state)
   }
 
   render() {
     const ennemies = this.state.ennemies
+    const spells = this.state.spells
+
     return (
       <section className={this.sectionClasses()}>
-        <ul className="ennemies">{ennemies.map(::this.renderEnnemy)}</ul>
-        <Timer ennemies={this.state.ennemies} />
+        <EnnemiesList
+          ennemies={ennemies}
+          spells={spells}
+          onSpellClick={::this.handleSpellClick} />
+
+        <Timer
+          spells={spells}
+          onTick={::this.handleTick}
+          on60sMark={::this.handle60sMark}
+          on30sMark={::this.handle30sMark} />
+
         <VoiceController />
       </section>
     )
   }
+
+  handleSpellClick(spell) {
+    this.actions.resetSpellCooldown(spell)
+  }
+
+  handleTick() {
+    this.actions.decrementSpellCooldowns(this.state.spells)
+  }
+
+  handle60sMark() {
+
+  }
+
+  handle30sMark() {
+
+  }
 }
 
 Mixin.onClass(InGame, Pane)
+Mixin.onClass(InGame, State)

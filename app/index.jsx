@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom'
 import App from './app.jsx'
 
 const bootsrap = () => {
-  setTimeout(function() {
-    ReactDOM.render(
-      <App />,
-      document.querySelector('.app')
-    )
-  }, 2000)
+  ReactDOM.render(
+    <App />,
+    document.querySelector('.app')
+  )
 }
 
 if (window.cordova)

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Hub from '../../hub'
-import VoiceRecognition from '../../../lib/voice_recognition'
+import VoiceRecognition from '../../lib/voice_recognition'
 
 export default class VoiceController extends Component {
   componentDidMount() {
