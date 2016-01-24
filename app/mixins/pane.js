@@ -7,8 +7,8 @@ const Pane = {
     navigate: React.PropTypes.func.isRequired
   },
 
-  sectionClasses() {
-    return classnames({ pane: true, active: this.context.active })
+  sectionClasses(paneName) {
+    return classnames({ pane: true, [paneName]: true, active: this.context.active })
   }
 }
 

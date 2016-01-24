@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Mixin from 'react-mixin'
-import Pane from '../../mixins/pane'
-import State from '../../mixins/state'
-import EnnemiesList from '../../components/ennemies_list.jsx'
-import WarningSpeech from '../../components/warning_speech.jsx'
-import VoiceController from '../../components/voice_controller.jsx'
+import Pane from '../mixins/pane'
+import State from '../mixins/state'
+import EnnemiesList from '../components/ennemies_list.jsx'
+import WarningSpeech from '../components/warning_speech.jsx'
+import VoiceController from '../components/voice_controller.jsx'
 
 export default class InGame extends Component {
   constructor() {
@@ -32,7 +32,7 @@ export default class InGame extends Component {
 
   render() {
     return (
-      <section className={this.sectionClasses()}>
+      <section className={this.sectionClasses('ingame')}>
         <EnnemiesList
           ennemies={this.state.ennemies}
           spells={this.state.spells}

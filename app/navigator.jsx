@@ -55,12 +55,12 @@ export default class Navigator extends Component {
 
 const animate = (pane) => {
   const el = ReactDOM.findDOMNode(pane)
-  el.addEventListener('transitionend', animateDidEnd)
-  el.classList.add('animating')
+  // el.addEventListener('transitionend', animateDidEnd)
+  // el.classList.add('animating')
   el.classList.toggle('active')
 }
 
-const animateDidEnd = function() {
-  this.classList.remove('animating')
-  this.removeEventListener(animateDidEnd)
-}
+// const animateDidEnd = function() {
+//   this.classList.remove('animating')
+//   this.removeEventListener(animateDidEnd)
+// }

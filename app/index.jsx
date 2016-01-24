@@ -10,6 +10,6 @@ const bootsrap = () => {
 }
 
 if (window.cordova)
-  document.addEventListener("deviceready", bootsrap)
+  document.addEventListener("deviceready", () => setTimeout(bootsrap, 6000))
 else
   bootsrap()

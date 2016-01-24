@@ -31,8 +31,12 @@ export default class GameStore extends Store {
 
   handleDecrementSpellCooldowns(spells) {
     const warningSpells = spells
-    .filter((spell) => 0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown)
-    .sort((spell1, spell2) => spell1.cooldown - spell2.cooldown)
+      .filter(
+        (spell) => 0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown
+      )
+      .sort(
+        (spell1, spell2) => spell1.cooldown - spell2.cooldown
+      )
 
     this.setState({ spells, warningSpells })
   }

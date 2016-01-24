@@ -1,8 +1,12 @@
+/** Base */
+@import 'mixins';
 @import 'normalize';
 @import 'base';
 @import 'forms';
 @import 'pane';
 
-@import '../app/components/spell/spell';
-@import '../app/panes/welcome/welcome';
-@import '../app/panes/ingame/ingame';
+/** Components */
+
+/** Panes */
+@import 'panes/welcome';
+@import 'panes/ingame';

@@ -1,0 +1,95 @@
+.pane.welcome {
+  justify-content: flex-end;
+
+  form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    height: 30%;
+    background: #fff;
+
+    border-radius: 20rem 20rem 0 0;
+    transform: translateY(100%);
+
+    // Add a white filler below the form. We need it because of the bounce animation.
+    &::after {
+      content: '';
+      @include absolute(100%);
+      background: #fff;
+    }
+  }
+
+  legend {
+    color: rgb(49, 85, 104);
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 2;
+  }
+
+  input {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(213, 218, 221);
+    padding: 1rem;
+    background: rgb(249, 250, 250);
+    color: inherit;
+    font-weight: inherit;
+    font-size: 1em;
+  }
+
+  button {
+    @include absolute-right(-3rem, 3rem, 6rem, 6rem);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 0px;
+    border-radius: 50%;
+    background: #0F9ADA;
+    color: #fff;
+    transform: scale(0);
+
+    .material-icons {
+      font-size: 3.5em;
+    }
+  }
+}
+
+.pane.welcome.active {
+  form {
+    animation: welcome-intro-form 600ms forwards;
+
+    @keyframes welcome-intro-form {
+      from {
+        transform: translateY(100%);
+        border-radius: 20rem 20rem 0 0;
+      }
+
+      60% {
+        transform: translateY(-10%);
+        border-radius: 0;
+      }
+
+      to {
+        transform: none;
+        border-radius: 0;
+      }
+    }
+  }
+
+  button {
+    animation: welcome-intro-button 400ms 400ms forwards;
+
+    @keyframes welcome-intro-button {
+      from {
+        transform: scale(0);
+      }
+
+      60% {
+        transform: scale(1.1);
+      }
+
+      to {
+        transform: none;
+      }
+    }
+  }
+}

@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import Mixin from 'react-mixin'
-import Pane from '../../mixins/pane'
-import State from '../../mixins/state'
+import Pane from '../mixins/pane'
+import State from '../mixins/state'
 
 export default class Welcome extends Component {
   render() {
     return (
-      <section className={this.sectionClasses()}>
+      <section className={this.sectionClasses('welcome')}>
         <h1>Welcome summoner</h1>
         <form onSubmit={::this.handleSubmit}>
-          <input ref="summonerInput" placeholder="Enter a summoner's name" required defaultValue="ngrygod" />
-          <button>Search</button>
+          <fieldset>
+            <legend>Summoner's name</legend>
+            <input ref="summonerInput" required defaultValue="ngrygod" />
+          </fieldset>
+          <button><i className="material-icons">chevron_right</i></button>
         </form>
       </section>
     )
@@ -24,10 +27,10 @@ export default class Welcome extends Component {
     const game = this.context.flux.getActions('game')
 
     user.loadSummoner()
-    .then(game.loadInfos)
-    .then(() => {
-      this.context.navigate('InGame')
-    })
+      .then(game.loadInfos)
+      .then(() => {
+        this.context.navigate('InGame')
+      })
   }
 }
 
