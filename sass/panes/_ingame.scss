@@ -1,6 +1,12 @@
+.pane.ingame {
+  color: #fff;
+}
+
 .ennemies {
   display: flex;
   flex-direction: column;
+  margin: 2em;
+  background: rgba(36, 41, 57, .9);
 }
 
 .ennemy {
@@ -11,6 +17,8 @@
 .summoner {
   img {
     display: block;
+    border-radius: 50%;
+    border: 1px solid;
   }
 }
 

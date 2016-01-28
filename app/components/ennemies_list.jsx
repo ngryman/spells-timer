@@ -12,7 +12,8 @@ export default class EnnemiesList extends Component {
     return (
       <li key={spell.key} className={classnames({ spell: true, available: spell.cooldown <= 0})}
         onClick={this.props.onSpellClick.bind(this, spell)}>
-        {spell.name} {spell.cooldown > 0 ? spell.cooldown : 0}
+        <img src={spell.icon} />
+        {spell.cooldown > 0 ? spell.cooldown : 0}
       </li>
     )
   }
@@ -26,7 +27,6 @@ export default class EnnemiesList extends Component {
       <li key={ennemy.key} className="ennemy">
         <figure className="summoner">
           <img src={ennemy.champion.icon} />
-          <figcation>{ennemy.name}</figcation>
         </figure>
         <ul className="spells">{spells.map(::this.renderSpell)}</ul>
       </li>
