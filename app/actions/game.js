@@ -68,6 +68,7 @@ const createSpell = (spellId, ennemyKey) => {
     key: Uuid.v1(),
     ennemyKey
   }, spellDef, {
-    cooldown: spellDef.cooldown
+    cooldown: spellDef.cooldown,
+    refCooldown: spellDef.cooldown
   })
 }
