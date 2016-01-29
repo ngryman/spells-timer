@@ -48,7 +48,7 @@ export default class EnnemiesList extends Component {
 
 const arcPath = (spell) => {
   const r = 50
-  const t = Math.max(0, spell.cooldown) / spell.refCooldown
+  const t = spell.cooldown / spell.refCooldown
   const a = t * Math.PI * 2
   const m = a > Math.PI ? 1 : 0
   const x = Math.sin(a) * r

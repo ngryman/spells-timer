@@ -2,7 +2,13 @@ import { Actions } from 'flummox'
 
 export default class SpellActions extends Actions {
   decrementCooldowns(spells) {
-    spells.forEach((spell) => spell.cooldown--)
+    spells.forEach((spell) => {
+      if (spell.counting) {
+        spell.cooldown--
+        if (0 === spell.cooldown)
+          spell.counting = false
+      }
+    })
     return spells
   }
 
@@ -10,6 +16,7 @@ export default class SpellActions extends Actions {
     if (spell.cooldown > 0) return
 
     spell.cooldown = spell.refCooldown
+    spell.counting = true
     return spell
   }
 }
