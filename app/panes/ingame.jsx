@@ -38,6 +38,8 @@ export default class InGame extends Component {
           spells={this.state.spells}
           onSpellClick={::this.handleSpellClick} />
 
+        <button onClick={::this.handleFinishClick}>Finish</button>
+
         <WarningSpeech monitorSpells={this.state.warningSpells} />
         <VoiceController />
       </section>
@@ -46,6 +48,10 @@ export default class InGame extends Component {
 
   handleSpellClick(spell) {
     this.spellActions.resetCooldown(spell)
+  }
+
+  handleFinishClick() {
+    this.context.navigate('Welcome')
   }
 
   tick() {
