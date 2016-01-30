@@ -25,7 +25,8 @@ export default class InGame extends Component {
   render() {
     return (
       <section className={this.sectionClasses('ingame')}>
-        <List items={this.state.ennemies}
+        <List className="ennemies"
+          items={this.state.ennemies}
           itemComponent={EnnemyItem}
           onItemClick={::this.handleSpellClick} />
 
