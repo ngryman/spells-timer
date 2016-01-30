@@ -11,22 +11,31 @@ const supportMessages = [
 ]
 
 export default class WarningSpeech extends Component {
-  propTypes: {
-    monitorSpells: React.PropTypes.array.isRequired,
-    ennemies: React.PropTypes.array.isRequired
-  };
+  constructor() {
+    super()
+
+    this.state = {
+      spells: []
+    }
+  }
 
   componentDidMount() {
     this.speech = new SpeechSynthesis()
-    this.store = this.context.flux.getStore('game')
+
+    this.spells = this.context.flux.getStore('spells')
+    this.spells.addListener('change', () =>
+      this.setState({ spells: this.spells.getWarningSpells() })
+    )
+
+    this.ennemies = this.context.flux.getStore('ennemies')
   }
 
-  shouldComponentUpdate(nextProps) {
-    return (0 !== nextProps.monitorSpells.length)
+  shouldComponentUpdate(nextProps, nextState) {
+    return (0 !== nextState.spells.length)
   }
 
   componentDidUpdate() {
-    const spells = this.props.monitorSpells
+    const spells = this.state.spells
     this.sayWarningMessages(spells)
     this.sayRandomSupportMessage(spells)
   }
@@ -52,7 +61,7 @@ export default class WarningSpeech extends Component {
   }
 
   createMessage(spell) {
-    const ennemy = this.store.getEnnemyBySpell(spell)
+    const ennemy = this.ennemies.getEnnemyBySpell(spell)
 
     let message = `${ennemy.champion.name}'s' ${spell.name} is`
     if (0 === spell.cooldown)

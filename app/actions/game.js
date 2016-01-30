@@ -3,19 +3,25 @@ import Champions from 'lol-champions'
 import Spells from 'lol-spells'
 import Uuid from 'node-uuid'
 
+/* -------------------------------------------------------------------------- */
+
+const participants = [
+  { summonerId: 2, summonerName: 'Plouc', championId: 'ahri', spell1Id: 'flash', spell2Id: 'dot'},
+  { summonerId: 2, summonerName: 'KevinSaRace', championId: 'reksai', spell1Id: 'flash', spell2Id: 'teleport'},
+  { summonerId: 2, summonerName: 'PhucTran', championId: 'jax', spell1Id: 'flash', spell2Id: 'dot'},
+  { summonerId: 2, summonerName: 'xxAtomexx', championId: 'tryndamere', spell1Id: 'flash', spell2Id: 'teleport'},
+  { summonerId: 2, summonerName: 'Vocyfera12', championId: 'missfortune', spell1Id: 'flash', spell2Id: 'exhaust'}
+]
+
+/* -------------------------------------------------------------------------- */
+
 export default class GameActions extends Actions {
   loadInfos(summoner) {
-    return Promise.resolve({
-      participants: [
-        { summonerId: 2, summonerName: 'Plouc', championId: 'ahri', spell1Id: 'flash', spell2Id: 'dot'},
-        { summonerId: 2, summonerName: 'KevinSaRace', championId: 'reksai', spell1Id: 'flash', spell2Id: 'teleport'},
-        { summonerId: 2, summonerName: 'PhucTran', championId: 'jax', spell1Id: 'flash', spell2Id: 'dot'},
-        { summonerId: 2, summonerName: 'xxAtomexx', championId: 'tryndamere', spell1Id: 'flash', spell2Id: 'teleport'},
-        { summonerId: 2, summonerName: 'Vocyfera12', championId: 'missfortune', spell1Id: 'flash', spell2Id: 'exhaust'}
-      ]
-    })
+    return Promise.resolve({ participants })
     .then((gameInfos) => ({
-      ennemies: gameInfos.participants.map((participant) => createEnnemy(participant))
+      ennemies: gameInfos.participants.map(
+        (participant) => createEnnemy(participant)
+      )
     }))
     .then((gameInfos) => {
       gameInfos.ennemies[0].spells[0].cooldown = 2
@@ -23,26 +29,6 @@ export default class GameActions extends Actions {
       return gameInfos
     })
   }
-
-  // const API_KEY = '81d00796-d2a2-4e8e-b112-2c20c7ef60c0'
-  // const API_URL = 'https://euw.api.pvp.net'
-
-  // return fetch(`https://crossorigin.me/${API_URL}/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/${summoner.id}?api_key=${API_KEY}`)
-  // .then(res => {
-  //   if (404 === res.status) return Promise.reject('No live game found.')
-  //   res.json().then(game => {
-  //     const participants = game.participants.map(participant => {
-  //       return {
-  //         summonerName: participant.summonerName,
-  //         championId: participant.championId,
-  //         spell1Id: participant.spell1Id,
-  //         spell2Id: participant.spell2Id
-  //       }
-  //     })
-  //     store.set('participants', participants)
-  //     return participants
-  //   })
-  // })
 }
 
 const createEnnemy = (participant) => {

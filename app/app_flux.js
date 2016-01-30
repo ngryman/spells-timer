@@ -1,19 +1,23 @@
 import { Flux } from 'flummox'
+
 import UserActions from './actions/user'
-import SpellActions from './actions/spell'
 import GameActions from './actions/game'
+import SpellsActions from './actions/spells'
+
 import UserStore from './stores/user'
-import GameStore from './stores/game'
+import EnnemiesStore from './stores/ennemies'
+import SpellsStore from './stores/spells'
 
 export default class AppFlux extends Flux {
   constructor() {
     super()
 
     this.createActions('user', UserActions)
-    this.createActions('spell', SpellActions)
     this.createActions('game', GameActions)
+    this.createActions('spells', SpellsActions)
 
     this.createStore('user', UserStore, this)
-    this.createStore('game', GameStore, this)
+    this.createStore('ennemies', EnnemiesStore, this)
+    this.createStore('spells', SpellsStore, this)
   }
 }

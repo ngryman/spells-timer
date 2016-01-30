@@ -1,21 +1,29 @@
 import { Store } from 'flummox'
 
-export default class GameStore extends Store {
+export default class SpellsStore extends Store {
   constructor(flux) {
     super()
 
     const userActionIds = flux.getActionIds('game')
     this.register(userActionIds.loadInfos, this.handleLoadInfos)
 
-    const spellActionIds = flux.getActionIds('spell')
+    const spellActionIds = flux.getActionIds('spells')
     this.register(spellActionIds.decrementCooldowns, this.handleDecrementSpellCooldowns)
     this.register(spellActionIds.resetCooldown, this.handleResetSpellCooldown)
 
     this.state = {
-      ennemies: [],
-      spells: [],
-      warningSpells: []
+      spells: []
     }
+  }
+
+  getWarningSpells() {
+    return this.state.spells
+      .filter(
+        (spell) => (0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown) && spell.counting
+      )
+      .sort(
+        (spell1, spell2) => spell1.cooldown - spell2.cooldown
+      )
   }
 
   handleLoadInfos(game) {
@@ -23,37 +31,20 @@ export default class GameStore extends Store {
       (res, ennemy) => res.concat(ennemy.spells), []
     )
 
-    const ennemies = game.ennemies
-    ennemies.forEach((ennemy) => delete ennemy.spells)
-
-    this.setState({ ennemies, spells })
+    this.setState({ spells })
   }
 
   handleDecrementSpellCooldowns(spells) {
-    const warningSpells = spells
-      .filter(
-        (spell) => 0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown
-      )
-      .sort(
-        (spell1, spell2) => spell1.cooldown - spell2.cooldown
-      )
-
-    this.setState({ spells, warningSpells })
+    this.setState({ spells })
   }
 
   handleResetSpellCooldown(newSpell) {
     const spells = this.state.spells.map((spell) => {
-      if (spell.key === newSpell.key)
+      if (spell.key === newSpell)
         return newSpell
       return spell
     })
 
     this.setState({ spells })
-  }
-
-  getEnnemyBySpell(spell) {
-    return this.state.ennemies.find(
-      (ennemy) => ennemy.key === spell.ennemyKey
-    )
   }
 }

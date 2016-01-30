@@ -2,60 +2,44 @@ import React, { Component } from 'react'
 import Mixin from 'react-mixin'
 import Pane from '../mixins/pane'
 import State from '../mixins/state'
-import EnnemiesList from '../components/ennemies_list.jsx'
-import WarningSpeech from '../components/warning_speech.jsx'
-import VoiceController from '../components/voice_controller.jsx'
+import List from '../components/list.jsx'
+import EnnemyItem from '../components/ennemy_item.jsx'
 
 export default class InGame extends Component {
   constructor() {
     super()
 
     this.state = {
-      ennemies: [],
-      spells: [],
-      warningSpells: []
+      ennemies: []
     }
   }
 
   componentWillMount() {
-    this.store = this.context.flux.getStore('game')
-    this.spellActions = this.context.flux.getActions('spell')
+    this.ennemies = this.context.flux.getStore('ennemies')
+    this.ennemies.addListener('change', () => this.setState(this.ennemies.state))
+    this.setState(this.ennemies.state)
 
-    this.store.addListener('change', () => this.setState(this.store.state))
-    this.setState(this.store.state)
-  }
-
-  componentDidUpdate() {
-    if (0 !== this.state.spells.length && null == this.intervalId)
-      this.intervalId = setInterval(::this.tick, 1000)
+    this.actions = this.context.flux.getActions('spells')
   }
 
   render() {
     return (
       <section className={this.sectionClasses('ingame')}>
-        <EnnemiesList
-          ennemies={this.state.ennemies}
-          spells={this.state.spells}
-          onSpellClick={::this.handleSpellClick} />
+        <List items={this.state.ennemies}
+          itemComponent={EnnemyItem}
+          onItemClick={::this.handleSpellClick} />
 
         <button onClick={::this.handleFinishClick}>Finish</button>
-
-        <WarningSpeech monitorSpells={this.state.warningSpells} />
-        <VoiceController />
       </section>
     )
   }
 
   handleSpellClick(spell) {
-    this.spellActions.resetCooldown(spell)
+    this.actions.resetCooldown(spell)
   }
 
   handleFinishClick() {
     this.context.navigate('Welcome')
-  }
-
-  tick() {
-    this.spellActions.decrementCooldowns(this.state.spells)
   }
 }
 
