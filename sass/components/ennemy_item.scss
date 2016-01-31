@@ -1,5 +1,45 @@
 .ennemy {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
+  padding: 0 3vw;
+
+  &:not(:first-child) {
+    margin-top: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, transparent 25%, rgba(#000, .2));
+  }
+
+  figure {
+    position: relative;
+    width: 12vh;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(transparent, currentColor 70%);
+    }
+
+    img {
+      display: block;
+      border-radius: 50%;
+      width: 100%;
+      -webkit-filter: grayscale(20%);
+    }
+  }
 }
+
+// #3dbfd9,#88c800,#ff96b9,#fe603a,#b15fa2,#cb6412,#00974d,#2c9bc7,#1c80a5,#ffb72c,#ce64b4,#3bc492,#ff637d,#866cba

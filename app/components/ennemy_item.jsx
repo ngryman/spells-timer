@@ -10,10 +10,11 @@ export default class EnnemyItem extends Component {
 
   render() {
     const ennemy = this.props.item
+    const color = ChampionColors[ennemy.champion.id]
 
     return (
-      <li className="ennemy" style={{ backgroundColor: ChampionColors[ennemy.champion.id] }}>
-        <figure className="summoner">
+      <li className="ennemy" style={{ background: color }}>
+        <figure className="summoner" style={{ color }}>
           <img src={ennemy.champion.icon} />
         </figure>
 

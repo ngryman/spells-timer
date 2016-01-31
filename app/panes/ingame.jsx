@@ -29,8 +29,6 @@ export default class InGame extends Component {
           items={this.state.ennemies}
           itemComponent={EnnemyItem}
           onItemClick={::this.handleSpellClick} />
-
-        <button onClick={::this.handleFinishClick}>Finish</button>
       </section>
     )
   }

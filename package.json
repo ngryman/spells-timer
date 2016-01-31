@@ -29,6 +29,7 @@
     "cordova-plugin-splashscreen": "^3.1.0",
     "dominant-color": "0.0.1",
     "eventemitter3": "^1.1.1",
+    "fastclick": "^1.0.6",
     "flummox": "^3.6.8",
     "got": "^6.1.1",
     "lol-champions": "^0.3.0",

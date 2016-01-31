@@ -6,11 +6,11 @@ import Uuid from 'node-uuid'
 /* -------------------------------------------------------------------------- */
 
 const participants = [
-  { summonerId: 2, summonerName: 'Plouc', championId: 'ahri', spell1Id: 'flash', spell2Id: 'dot'},
-  { summonerId: 2, summonerName: 'KevinSaRace', championId: 'reksai', spell1Id: 'flash', spell2Id: 'teleport'},
-  { summonerId: 2, summonerName: 'PhucTran', championId: 'jax', spell1Id: 'flash', spell2Id: 'dot'},
-  { summonerId: 2, summonerName: 'xxAtomexx', championId: 'tryndamere', spell1Id: 'flash', spell2Id: 'teleport'},
-  { summonerId: 2, summonerName: 'Vocyfera12', championId: 'missfortune', spell1Id: 'flash', spell2Id: 'exhaust'}
+  { summonerId: 2, summonerName: 'Plouc', championId: 'jax', spell1Id: 'flash', spell2Id: 'teleport'},
+  { summonerId: 2, summonerName: 'KevinSaRace', championId: 'nidalee', spell1Id: 'flash', spell2Id: 'smite'},
+  { summonerId: 2, summonerName: 'PhucTran', championId: 'ahri', spell1Id: 'flash', spell2Id: 'dot'},
+  { summonerId: 2, summonerName: 'xxAtomexx', championId: 'missfortune', spell1Id: 'flash', spell2Id: 'heal'},
+  { summonerId: 2, summonerName: 'Vocyfera12', championId: 'tahmkench', spell1Id: 'flash', spell2Id: 'exhaust'}
 ]
 
 /* -------------------------------------------------------------------------- */
@@ -24,7 +24,7 @@ export default class GameActions extends Actions {
       )
     }))
     .then((gameInfos) => {
-      gameInfos.ennemies[0].spells[0].cooldown = 2
+      gameInfos.ennemies[0].spells[0].cooldown = 10
       gameInfos.ennemies[0].spells[0].counting = true
       return gameInfos
     })
