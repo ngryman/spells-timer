@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class List extends Component {
   propTypes: {
     items: React.PropTypes.array.isRequired,
-    itemComponent: React.PropTypes.element.isRequired,
+    itemComponent: React.PropTypes.func.isRequired,
     onItemClick: React.PropTypes.func
   };
 

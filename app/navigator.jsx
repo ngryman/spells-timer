@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-export default class Navigator extends Component {
+export class Pane extends Component {
+  static propTypes = {
+    component: React.PropTypes.func.isRequired
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+
+export class Navigator extends Component {
   static propTypes = {
     initialPane: React.PropTypes.string.isRequired
   };
@@ -13,7 +21,8 @@ export default class Navigator extends Component {
   constructor() {
     super()
     this.state = {
-      current: ''
+      current: '',
+      next: ''
     }
   }
 
@@ -21,46 +30,51 @@ export default class Navigator extends Component {
     return { navigate: ::this.navigate }
   }
 
-  componentDidMount() {
-    // forces a reflow off the component in order to ensure transition will be properly played
-    const el = ReactDOM.findDOMNode(this)
-    el.offsetWidth
-
-    this.navigate(this.props.initialPane)
+  componentWillMount() {
+    this.setState({ current: this.props.initialPane })
   }
 
-  navigate(name, ...args) {
-    const from = this.refs[this.state.current]
-    const to = this.refs[name]
+  componentDidMount() {
+    this.animate()
+  }
 
-    if (from)
-      animate(from)
-    animate(to)
+  componentDidUpdate() {
+    if (this.state.next) {
+      this.animate().then(() => {
+        this.setState({ current: this.state.next, next: null })
+      })
+    }
+  }
 
-    this.setState({ current: name })
+  navigate(name) {
+    this.setState({ next: name })
+  }
+
+  animate() {
+    return new Promise((resolve) => {
+      const panes = document.querySelectorAll('.pane')
+      ![].forEach.call(panes, (pane) => {
+        pane.offsetWidth
+        pane.classList.toggle('active')
+      })
+
+      panes[0].addEventListener('transitionend', resolve)
+    })
   }
 
   render() {
     return (
       <main>
-        {React.Children.map(this.props.children, (child) =>
-          React.cloneElement(child, { ref: child.type.name })
-        )}
+        {React.Children.map(this.props.children, (child) => {
+          if ('Pane' !== child.type.name) return child
+
+          const component = child.props.component
+          if (this.state.current === component.name || this.state.next === component.name)
+            return React.createElement(child.props.component)
+
+          return null
+        })}
       </main>
     )
   }
 }
-
-/* -------------------------------------------------------------------------- */
-
-const animate = (pane) => {
-  const el = ReactDOM.findDOMNode(pane)
-  // el.addEventListener('transitionend', animateDidEnd)
-  // el.classList.add('animating')
-  el.classList.toggle('active')
-}
-
-// const animateDidEnd = function() {
-//   this.classList.remove('animating')
-//   this.removeEventListener(animateDidEnd)
-// }

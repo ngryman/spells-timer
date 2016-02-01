@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AppFlux from './app_flux'
 
-import Navigator from './navigator.jsx'
+import { Navigator, Pane } from './navigator.jsx'
 import Welcome from './panes/welcome.jsx'
 import InGame from './panes/ingame.jsx'
 import Timer from './components/timer.jsx'
@@ -19,8 +19,8 @@ export default class App extends Component {
   render() {
     return (
       <Navigator initialPane="Welcome">
-        <Welcome />
-        <InGame />
+        <Pane component={Welcome} />
+        <Pane component={InGame} />
 
         <Timer />
         <WarningSpeech />
