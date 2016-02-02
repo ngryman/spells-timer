@@ -37,6 +37,7 @@ const Draggable = {
 
     d.el.addEventListener('mousemove', d.handlers.move)
     d.el.addEventListener('mouseup', d.handlers.up)
+    d.el.addEventListener('mouseleave', d.handlers.up)
   },
 
   handleDragging(e) {
@@ -52,14 +53,16 @@ const Draggable = {
     const d = this.state.draggable
 
     if (d.dragging) {
-      let destEl = document.elementFromPoint(e.clientX, e.clientY)
-      while (!destEl.classList.contains('ennemy'))
-        destEl = destEl.parentNode
+      if ('mouseleave' !== e.type) {
+        let destEl = document.elementFromPoint(e.clientX, e.clientY)
+        while (!destEl.classList.contains('ennemy'))
+          destEl = destEl.parentNode
 
-      const dragNextEl = d.draggingEl.nextElementSibling
+        const dragNextEl = d.draggingEl.nextElementSibling
 
-      d.el.insertBefore(d.draggingEl, destEl.nextElementSibling)
-      d.el.insertBefore(destEl, dragNextEl)
+        d.el.insertBefore(d.draggingEl, destEl.nextElementSibling)
+        d.el.insertBefore(destEl, dragNextEl)
+      }
 
       d.draggingEl.classList.remove('dragging')
       d.dragging = false
@@ -67,6 +70,7 @@ const Draggable = {
 
     d.el.removeEventListener('mousemove', d.handlers.move)
     d.el.removeEventListener('mouseup', d.handlers.up)
+    d.el.removeEventListener('mouseleave', d.handlers.up)
   }
 }
 
