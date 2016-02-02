@@ -28,7 +28,8 @@ export default class InGame extends Component {
         <List className="ennemies"
           items={this.state.ennemies}
           itemComponent={EnnemyItem}
-          onItemClick={::this.handleSpellClick} />
+          onItemClick={::this.handleSpellClick}
+          draggable />
       </section>
     )
   }

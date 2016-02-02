@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Mixin from 'react-mixin'
+import Draggable from '../mixins/draggable'
 
 export default class List extends Component {
   propTypes: {
@@ -25,3 +27,5 @@ export default class List extends Component {
     )
   }
 }
+
+Mixin.onClass(List, Draggable)

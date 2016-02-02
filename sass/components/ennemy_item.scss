@@ -42,4 +42,16 @@
   }
 }
 
+.ennemy.dragging {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .2);
+  }
+}
+
 // #3dbfd9,#88c800,#ff96b9,#fe603a,#b15fa2,#cb6412,#00974d,#2c9bc7,#1c80a5,#ffb72c,#ce64b4,#3bc492,#ff637d,#866cba
