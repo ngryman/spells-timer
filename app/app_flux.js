@@ -6,7 +6,6 @@ import SpellsActions from './actions/spells'
 
 import UserStore from './stores/user'
 import EnnemiesStore from './stores/ennemies'
-import SpellsStore from './stores/spells'
 
 export default class AppFlux extends Flux {
   constructor() {
@@ -18,6 +17,5 @@ export default class AppFlux extends Flux {
 
     this.createStore('user', UserStore, this)
     this.createStore('ennemies', EnnemiesStore, this)
-    this.createStore('spells', SpellsStore, this)
   }
 }

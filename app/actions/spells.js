@@ -6,7 +6,7 @@ export default class SpellsActions extends Actions {
     return spells
   }
 
-  resetCooldown(spell) {
+  startCooldown(spell) {
     spell.cooldown = spell.refCooldown
     spell.counting = true
     return spell
@@ -14,6 +14,12 @@ export default class SpellsActions extends Actions {
 
   forwardCooldown(spell) {
     return cooldownTick(10, spell)
+  }
+
+  resetCooldown(spell) {
+    spell.cooldown = 0
+    spell.counting = false
+    return spell
   }
 }
 

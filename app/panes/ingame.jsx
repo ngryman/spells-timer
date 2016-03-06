@@ -28,19 +28,24 @@ export default class InGame extends Component {
         <List className="ennemies"
           items={this.state.ennemies}
           itemComponent={EnnemyItem}
-          onItemClick={::this.handleSpellClick}
+          onItemTap={::this.handleSpellTap}
+          onItemPress={::this.handleSpellPress}
           draggable />
       </section>
     )
   }
 
-  handleSpellClick(spell) {
+  handleSpellTap(spell) {
     if (!spell.counting) {
-      this.actions.resetCooldown(spell)
+      this.actions.startCooldown(spell)
     }
     else {
       this.actions.forwardCooldown(spell)
     }
+  }
+
+  handleSpellPress(spell) {
+    this.actions.resetCooldown(spell)
   }
 
   handleFinishClick() {

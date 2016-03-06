@@ -6,7 +6,8 @@ export default class List extends Component {
   propTypes: {
     items: React.PropTypes.array.isRequired,
     itemComponent: React.PropTypes.func.isRequired,
-    onItemClick: React.PropTypes.func
+    onItemTap: React.PropTypes.func,
+    onItemPress: React.PropTypes.func
   };
 
   renderItem(item) {
@@ -14,7 +15,8 @@ export default class List extends Component {
       React.createElement(this.props.itemComponent, {
         key: item.key,
         item,
-        onClick: this.props.onItemClick
+        onTap: this.props.onItemTap,
+        onPress: this.props.onItemPress
       })
     )
   }

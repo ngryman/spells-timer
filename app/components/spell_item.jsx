@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Tappable from 'react-tappable'
 import classnames from 'classnames'
 
 const CooldownRadius = 50
@@ -37,16 +38,21 @@ export default class SpellItem extends Component {
 
     return (
       <li className={classnames({ spell: true, [spell.id]: true, counting: spell.counting })}>
-        <button className="spell-button"
+        <Tappable className="spell-button"
+          component='button'
           disabled={spell.couting}
-          onClick={this.props.onClick.bind(this, spell)}>
+          pressDelay={300}
+          onTap={this.props.onTap.bind(this, spell)}
+          onPress={this.props.onPress.bind(this, spell)}>
           {this.renderCooldown(spell)}
           {this.renderContent(spell)}
-        </button>
+        </Tappable>
       </li>
     )
   }
 }
+
+/* -------------------------------------------------------------------------- */
 
 const drawCooldownPie = (spell) => {
   const r = CooldownRadius

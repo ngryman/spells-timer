@@ -22,9 +22,9 @@ export default class WarningSpeech extends Component {
   componentDidMount() {
     this.speech = new SpeechSynthesis()
 
-    this.spells = this.context.flux.getStore('spells')
-    this.spells.addListener('change', () =>
-      this.setState({ spells: this.spells.getWarningSpells() })
+    this.store = this.context.flux.getStore('ennemies')
+    this.store.addListener('change', () =>
+      this.setState({ spells: this.store.getWarningSpells() })
     )
 
     this.ennemies = this.context.flux.getStore('ennemies')

@@ -9,8 +9,9 @@ export default class EnnemiesStore extends Store {
 
     const spellActionIds = flux.getActionIds('spells')
     this.register(spellActionIds.decrementCooldowns, this.handleDecrementSpellCooldowns)
-    this.register(spellActionIds.resetCooldown, this.handleResetSpellCooldown)
+    this.register(spellActionIds.startCooldown, this.handleStartSpellCooldown)
     this.register(spellActionIds.forwardCooldown, this.handleForwardCooldown)
+    this.register(spellActionIds.resetCooldown, this.handleResetCooldown)
 
     this.state = {
       ennemies: []
@@ -29,6 +30,16 @@ export default class EnnemiesStore extends Store {
     )
   }
 
+  getWarningSpells() {
+   return this.getSpells()
+     .filter(
+       (spell) => (0 === spell.cooldown || 30 === spell.cooldown || 60 === spell.cooldown) && spell.counting
+     )
+     .sort(
+       (spell1, spell2) => spell1.cooldown - spell2.cooldown
+     )
+ }
+
   /* -------------------------------------------------------------------------- */
 
   handleLoadInfos(game) {
@@ -46,7 +57,7 @@ export default class EnnemiesStore extends Store {
     this.setState({ ennemies })
   }
 
-  handleResetSpellCooldown(spell) {
+  handleStartSpellCooldown(spell) {
     const ennemies = this.state.ennemies.map((ennemy) => {
       ennemy.spells = ennemy.spells.map(
         (ennemySpell) => (spell.key === ennemySpell.key ? spell : ennemySpell)
@@ -58,6 +69,17 @@ export default class EnnemiesStore extends Store {
   }
 
   handleForwardCooldown(spell) {
+    const ennemies = this.state.ennemies.map((ennemy) => {
+      ennemy.spells = ennemy.spells.map(
+        (ennemySpell) => (spell.key === ennemySpell.key ? spell : ennemySpell)
+      )
+      return ennemy
+    })
+
+    this.setState({ ennemies })
+  }
+
+  handleResetCooldown(spell) {
     const ennemies = this.state.ennemies.map((ennemy) => {
       ennemy.spells = ennemy.spells.map(
         (ennemySpell) => (spell.key === ennemySpell.key ? spell : ennemySpell)

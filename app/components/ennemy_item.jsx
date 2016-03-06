@@ -21,7 +21,8 @@ export default class EnnemyItem extends Component {
         <List className="spells"
           items={ennemy.spells}
           itemComponent={SpellItem}
-          onItemClick={this.props.onClick} />
+          onItemTap={this.props.onTap}
+          onItemPress={this.props.onPress} />
       </li>
     )
   }
