@@ -2,15 +2,7 @@ import { Actions } from 'flummox'
 
 export default class SpellsActions extends Actions {
   decrementCooldowns(spells) {
-    spells.forEach((spell) => {
-      if (spell.counting) {
-        spell.cooldown--
-        if (spell.cooldown < 0) {
-          spell.counting = false
-          spell.cooldown = 0
-        }
-      }
-    })
+    spells.forEach(cooldownTick.bind(null, 1))
     return spells
   }
 
@@ -21,7 +13,20 @@ export default class SpellsActions extends Actions {
   }
 
   forwardCooldown(spell) {
-    spell.cooldown -= 10
-    return spell
+    return cooldownTick(10, spell)
   }
+}
+
+/* -------------------------------------------------------------------------- */
+
+function cooldownTick(incr, spell) {
+  if (spell.counting) {
+    spell.cooldown -= incr
+    if (spell.cooldown < 0) {
+      spell.counting = false
+      spell.cooldown = 0
+    }
+  }
+
+  return spell
 }
