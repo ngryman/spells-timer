@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>haste</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="New-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="haste" sketch:type="MSArtboardGroup">
+            <g id="Guy" sketch:type="MSLayerGroup" transform="translate(46.665404, 28.625000)">
+                <path d="M109.446759,4.39750956 C118.758892,11.172458 120.696561,24.052859 113.774428,33.1671577 C106.852084,42.2810092 93.6912282,44.1774201 84.3790956,37.4024549 C75.0665061,30.6277301 73.1291224,17.7471055 80.0514267,8.63280678 C86.973771,-0.481044704 100.13417,-2.37723203 109.446759,4.39750956 L109.446759,4.39750956 Z" id="Head" fill="#3DBFD9" sketch:type="MSShapeGroup"></path>
+                <path d="M30.5708942,48.5950024 C30.5708942,48.5950024 30.8526561,48.2442684 31.2011255,47.8104976 L51.629132,22.3819399 L102.466382,65.2305563 L125.312025,39.4373547" id="Arms" stroke="#3DBFD9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M0.823853771,136.375 L73.334596,44.1249999" id="Body" stroke="#3DBFD9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M45.3909571,128.873842 L69.0942858,97.4341993 L53.1881047,85.5290509 L81.7262741,47.9161503" id="Right-Leg" stroke="#3DBFD9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+            </g>
+            <g id="Trace" sketch:type="MSLayerGroup" transform="translate(20.318182, 90.267045)" stroke="#3DBFD9" stroke-width="5" stroke-linecap="round">
+                <path d="M0,1.08143939 L63.0814394,1.08143939" id="Line" sketch:type="MSShapeGroup"></path>
+                <path d="M6.64015152,17.3030303 L50.9074238,17.3030303" id="Line" sketch:type="MSShapeGroup"></path>
+                <path d="M14.3869949,33.5246212 L38.7342172,33.5246212" id="Line" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

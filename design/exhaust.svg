@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>exhaust</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="New-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="exhaust" sketch:type="MSArtboardGroup">
+            <g id="Guy" sketch:type="MSLayerGroup" transform="translate(72.000000, 21.000000)">
+                <path d="M60,12.889983 C60,20.0121562 54.3222857,25.7834522 47.3194286,25.7834522 C40.3182857,25.7834522 34.6405714,20.0121562 34.6405714,12.889983 C34.6405714,5.77129598 40.3182857,2.13162821e-14 47.3194286,2.13162821e-14 C54.3205714,1.97681273e-14 60,5.77129598 60,12.889983 L60,12.889983 Z" id="Head" fill="#CB6412" sketch:type="MSShapeGroup"></path>
+                <path d="M1.25,152.859703 L1.25,85.1047897" id="Left-Leg" stroke="#CB6412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M25.625,152.859703 L25.625,114.229736 L18.5622559,90.4869224" id="Right-Leg" stroke="#CB6412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M21.5811,90.1710526 L23.1245118,87.1261372 L16.8745118,49.6447368 L1.40788275,84.1877692 C1.18234567,84.6914817 1.42938747,85.2057413 1.96459909,85.3376155 L21.5811,90.1710526 Z" id="Bottom-Body" stroke="#CB6412" stroke-width="10" stroke-linecap="round" fill="#CB6412" sketch:type="MSShapeGroup"></path>
+                <path d="M35.5,90.6776316 L25.1245117,31.1541106" id="Left-Arm" stroke="#CB6412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M58.5,90.6776316 L49.2495117,37.6129921" id="Right-Arm" stroke="#CB6412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M38.7495117,65.4698856 L51.9754417,37.283774 C52.6790911,35.784209 52.0431059,33.9949577 50.5426069,33.2815106 L27.4564165,22.3046453 C25.9614343,21.5938213 24.1678774,22.2337811 23.4563503,23.7215833 L20.7495117,29.3815789 L38.2495117,81.8070567 L34.1752232,55.152634 C34.0091448,54.066132 34.7685129,53.1853481 35.8675403,53.1853481 L35.6958809,53.1853481 C36.2504389,53.1853481 36.7729403,53.6225613 36.8642528,54.1698775 L38.7495117,65.4698856 Z" id="Top-Body" stroke="#CB6412" fill="#CB6412" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

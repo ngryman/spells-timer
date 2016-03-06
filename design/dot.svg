@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>dot</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="New-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="dot" sketch:type="MSArtboardGroup" stroke="#FE603A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M53.0243161,117.857143 C53.0243161,143.893424 74.1308922,165 100.167173,165 C126.203454,165 147.31003,143.893424 147.31003,117.857143 C147.31003,100.607582 138.045659,85.5218315 124.221181,77.3041557 C123.051125,76.6145493 122.020112,76.0577569 120.966928,75.5391229 C88.7419738,57.0608613 102.524316,35.75 102.524316,35.75 C102.524316,35.75 53.8100304,65.8035714 94.244069,110 C79.3457447,107.642857 70.0994065,98.351231 68.2334772,83.1770123 C58.8825216,91.7918284 53.0243161,104.140357 53.0243161,117.857143 Z" id="Flame" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

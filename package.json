@@ -39,6 +39,7 @@
     "onchange": "^2.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-mixin": "^3.0.3"
+    "react-mixin": "^3.0.3",
+    "watchify": "^3.7.0"
   }
 }

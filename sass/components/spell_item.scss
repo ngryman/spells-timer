@@ -13,13 +13,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 6px;
     border: 1px solid;
     width: 14vh;
     height: 14vh;
+    transition: border-radius 300ms, border-color 300ms;
 
     .counting & {
-      border: 0;
+      border-radius: 50%;
+      border-color: transparent;
+      opacity: 1;
     }
   }
 
@@ -46,7 +49,7 @@
       margin-left: -1.5vh;
       width: 3vh;
       height: 3vh;
-      transform: translateY(130%);
+      transform: translateY(120%);
     }
   }
 
@@ -94,5 +97,13 @@
 
   &.heal {
     color: #88c800;
+  }
+
+  &.haste {
+    color: #3dbfd9;
+  }
+
+  &.exhaust {
+    color: #cb6412;
   }
 }

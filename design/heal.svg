@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>heal</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="New-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="heal" sketch:type="MSArtboardGroup" stroke="#88C800" stroke-width="10">
+            <path d="M133.106123,30 C116.575142,30 106.14017,38.045259 100.084203,45.320108 C94.0282354,38.045259 83.5948655,30 67.0574776,30 C38.9078803,30 20,56.0770181 20,80.4306242 C20,115.883901 88.1004027,163.39946 95.865367,168.699433 C97.1371042,169.565944 98.6106535,170 100.084203,170 C101.557752,170 103.031301,169.565944 104.303039,168.699433 C112.068003,163.39946 180.168406,115.883901 180.168406,80.4306242 C180.168406,56.0770181 161.257322,30 133.106123,30 L133.106123,30 Z" id="Heart" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

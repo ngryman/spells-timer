@@ -14,7 +14,7 @@ export default class SpellItem extends Component {
     return (
       <div className="spell-content">
         {time}
-        <img className="spell-icon" src={`img/${spell.id}-icon.svg`} />
+        <img className="spell-icon" src={`img/${spell.id}.svg`} />
       </div>
     )
   }

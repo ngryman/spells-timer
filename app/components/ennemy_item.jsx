@@ -15,7 +15,7 @@ export default class EnnemyItem extends Component {
     return (
       <li className="ennemy" style={{ background: color }}>
         <figure className="summoner" style={{ color }}>
-          <img src={ennemy.champion.icon} />
+          <img className="summoner-img" src={ennemy.champion.icon} />
         </figure>
 
         <List className="spells"
