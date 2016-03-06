@@ -35,7 +35,12 @@ export default class InGame extends Component {
   }
 
   handleSpellClick(spell) {
-    this.actions.resetCooldown(spell)
+    if (!spell.counting) {
+      this.actions.resetCooldown(spell)
+    }
+    else {
+      this.actions.forwardCooldown(spell)
+    }
   }
 
   handleFinishClick() {

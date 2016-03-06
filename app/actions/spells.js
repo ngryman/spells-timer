@@ -15,10 +15,13 @@ export default class SpellsActions extends Actions {
   }
 
   resetCooldown(spell) {
-    if (spell.cooldown > 0) return
-
     spell.cooldown = spell.refCooldown
     spell.counting = true
+    return spell
+  }
+
+  forwardCooldown(spell) {
+    spell.cooldown -= 10
     return spell
   }
 }

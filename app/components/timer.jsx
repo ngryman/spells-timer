@@ -12,16 +12,13 @@ export default class Timer extends Component {
   }
 
   componentWillMount() {
-    this.spells = this.context.flux.getStore('spells')
-    this.spells.addListener('change', () => this.setState(this.spells.state))
-    this.setState(this.spells.state)
+    this.ennemies = this.context.flux.getStore('ennemies')
+    this.ennemies.addListener('change',
+      () => this.setState({ spells: this.ennemies.getSpells() })
+    )
 
     this.actions = this.context.flux.getActions('spells')
-  }
-
-  componentDidUpdate() {
-    if (0 !== this.state.spells.length && null == this.intervalId)
-      this.intervalId = setInterval(::this.tick, 1000)
+    this.intervalId = setInterval(::this.tick, 1000)
   }
 
   tick() {
