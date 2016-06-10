@@ -4,7 +4,7 @@
   "description": "Time ennemies summoner spells with your voice.",
   "main": "index.js",
   "scripts": {
-    "build:sass": "node-sass sass/index.scss --output-style compressed --source-map-embed --output www",
+    "build:sass": "node-sass sass/index.scss --output-style compressed --source-map-embed --output www --include-path ./node_modules",
     "build:app": "browserify app/index.jsx -t [ babelify --presets [ es2015 react stage-0 ] ] --debug --sourceMapRelative -o www/index.js",
     "build": "npm run build:sass -s; npm run build:app -s",
     "watch:sass": "npm run build:sass -s -- --watch --recursive",
@@ -41,6 +41,7 @@
     "react-dom": "^0.14.6",
     "react-mixin": "^3.0.3",
     "react-tappable": "^0.8.0",
+    "sass-dry": "^0.3.0",
     "watchify": "^3.7.0"
   }
 }

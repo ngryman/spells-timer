@@ -13,6 +13,6 @@ const bootsrap = () => {
 }
 
 if (window.cordova)
-  document.addEventListener("deviceready", bootsrap)
+  document.addEventListener('deviceready', bootsrap)
 else
   bootsrap()

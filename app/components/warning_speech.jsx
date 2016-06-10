@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Mixin from 'react-mixin'
 import State from '../mixins/state'
-import SpeechSynthesis from '../../lib/speech_synthesis'
+import SpeechSynthesis from '../../lib/speech/speech'
 
 const supportMessages = [
   'Be careful summoner.',
@@ -63,7 +63,7 @@ export default class WarningSpeech extends Component {
   createMessage(spell) {
     const ennemy = this.ennemies.getEnnemyBySpell(spell)
 
-    let message = `${ennemy.champion.name}'s' ${spell.name} is`
+    let message = `${ennemy.champion.name}'s ${spell.name} is`
     if (0 === spell.cooldown)
       message += ' now'
     message += ' available'

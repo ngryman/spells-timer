@@ -14,11 +14,11 @@ export default class EnnemyItem extends Component {
 
     return (
       <li className="ennemy" style={{ background: color }}>
-        <figure className="summoner" style={{ color }}>
-          <img className="summoner-img" src={ennemy.champion.icon} />
+        <figure className="ennemy-figure" style={{ color }}>
+          <img className="ennemy-img" src={ennemy.champion.icon} />
         </figure>
 
-        <List className="spells"
+        <List className="ennemy-spells"
           items={ennemy.spells}
           itemComponent={SpellItem}
           onItemTap={this.props.onTap}

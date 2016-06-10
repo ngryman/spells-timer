@@ -1,11 +1,3 @@
-%absolute-full {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 @mixin absolute($top: 0, $left: 0, $width: 100%, $height: 100%) {
   position: absolute;
   top: $top;
@@ -25,7 +17,15 @@
 @mixin pseudo-element($which) {
   &::#{$which} {
     content: '';
-    @extend %absolute-full;
+
+    @include dry(pseudo-element) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     @content;
   }
 }
@@ -38,6 +38,38 @@
 
 @mixin before() {
   @include pseudo-element(before) {
+    @content;
+  }
+}
+
+@mixin state($name) {
+  @include dry-set(enabled, false);
+
+  &.#{$name} {
+    @content;
+  }
+
+  @include dry-set(enabled, true);
+}
+
+@mixin parentState($name) {
+  @include dry-set(enabled, false);
+
+  .#{$name} & {
+    @content;
+  }
+
+  @include dry-set(enabled, true);
+}
+
+@mixin modifier($name) {
+  &.#{$name} {
+    @content;
+  }
+}
+
+@mixin parentModifier($name) {
+  .#{$name} & {
     @content;
   }
 }

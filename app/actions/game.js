@@ -8,7 +8,7 @@ import Uuid from 'node-uuid'
 const participants = [
   { summonerId: 2, summonerName: 'Plouc', championId: 'jax', spell1Id: 'flash', spell2Id: 'teleport'},
   { summonerId: 2, summonerName: 'KevinSaRace', championId: 'nidalee', spell1Id: 'flash', spell2Id: 'smite'},
-  { summonerId: 2, summonerName: 'PhucTran', championId: 'ahri', spell1Id: 'flash', spell2Id: 'dot'},
+  { summonerId: 2, summonerName: 'PhucTran', championId: 'ahri', spell1Id: 'barrier', spell2Id: 'dot'},
   { summonerId: 2, summonerName: 'xxAtomexx', championId: 'missfortune', spell1Id: 'flash', spell2Id: 'heal'},
   { summonerId: 2, summonerName: 'Vocyfera12', championId: 'tahmkench', spell1Id: 'haste', spell2Id: 'exhaust'}
 ]

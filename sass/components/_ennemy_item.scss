@@ -1,0 +1,52 @@
+.ennemy {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 3vw;
+
+  &:not(:first-child) {
+    margin-top: 0;
+  }
+
+  @include before() {
+    background: linear-gradient(to right, transparent, transparent 30%, rgba(#000, .2));
+  }
+
+  &-figure {
+    position: relative;
+    transform: scale(1.3);
+    width: 16vh;
+
+    @include before() {
+      z-index: 1;
+      background: currentColor;
+      opacity: .2;
+    }
+
+    @include after() {
+      box-shadow: -1.5vh 0 6vh 3vh currentColor inset;
+    }
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+    -webkit-filter: grayscale(40%);
+  }
+
+  &-spells {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3vw;
+  }
+
+  @include state(dragging) {
+    @include after() {
+      background: rgba(255, 255, 255, .2);
+    }
+  }
+}

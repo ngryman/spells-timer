@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>barrier</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="New-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="barrier" sketch:type="MSArtboardGroup" stroke="#F8E81C" stroke-width="10">
+            <path d="M99.1753925,170.535236 C48.0655548,152.435912 44.0437069,104.974089 44.0085883,104.497559 L43.9999557,39.0369907 C43.9996637,36.8223891 45.7617495,34.7460491 47.9526745,34.4131936 C47.9526745,34.4131936 74.1266401,30 100.491578,30 C126.85957,30 153.034844,34.4131936 153.034844,34.4131936 C155.218283,34.7522446 156.988074,36.814131 156.987781,39.0369058 L156.979149,104.496088 C157.363656,104.496088 152.923709,152.435912 101.809291,170.533765 L100.493105,171 L99.1753925,170.535236 Z" id="Shield" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

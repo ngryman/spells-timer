@@ -1,0 +1,188 @@
+.spell {
+  &:not(:last-child) {
+    margin-right: 3vh;
+  }
+
+  &-button {
+    position: relative;
+    color: inherit;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 3px solid;
+    width: 14vh;
+    height: 14vh;
+    transition: border-radius 200ms;
+
+    @include before() {
+      z-index: -1;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity 200ms 100ms;
+    }
+
+    @include parentState(counting) {
+      border-radius: 50%;
+      border-width: 2px;
+
+      @include parentModifier(flash) {
+        color: lighten(#ffb72c, 30);
+      }
+
+      @include parentModifier(dot) {
+        color: lighten(#fe603a, 30);
+      }
+
+      @include parentModifier(teleport) {
+        color: lighten(#ce64b4, 30);
+      }
+
+      @include parentModifier(heal) {
+        color: lighten(#88c800, 30);
+      }
+
+      @include parentModifier(haste) {
+        color: lighten(#3dbfd9, 30);
+      }
+
+      @include parentModifier(exhaust) {
+        color: lighten(#cb6412, 30);
+      }
+
+      @include parentModifier(barrier) {
+        color: lighten(#f8e71c, 30);
+      }
+
+      @include parentModifier(smite) {
+        color: lighten(#cb6412, 30);
+      }
+
+      @include before() {
+        opacity: .1;
+      }
+
+      @include state(time60) {
+        @include before() {
+          animation: spell-blink 1s linear infinite;
+        }
+      }
+
+      @include state(time30) {
+        @include before() {
+          animation: spell-blink 500ms linear infinite;
+        }
+      }
+    }
+  }
+
+  &-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    width: 100%;
+    font-family: 'Varela Round';
+    font-size: 5em;
+
+    @include parentModifier(flash) {
+      color: lighten(#ffb72c, 30);
+    }
+
+    @include parentModifier(dot) {
+      color: lighten(#fe603a, 30);
+    }
+
+    @include parentModifier(teleport) {
+      color: lighten(#ce64b4, 30);
+    }
+
+    @include parentModifier(heal) {
+      color: lighten(#88c800, 30);
+    }
+
+    @include parentModifier(haste) {
+      color: lighten(#3dbfd9, 30);
+    }
+
+    @include parentModifier(exhaust) {
+      color: lighten(#cb6412, 30);
+    }
+
+    @include parentModifier(barrier) {
+      color: lighten(#f8e71c, 30);
+    }
+
+    @include parentModifier(smite) {
+      color: lighten(#cb6412, 30);
+    }
+  }
+
+  &-icon {
+    width: 8vh;
+    height: 8vh;
+
+    @include parentState(counting) {
+      @include absolute(50%, 50%, 3vh, 3vh);
+      margin-top: -1vh;
+      margin-left: -1.5vh;
+      transform: translateY(120%);
+    }
+  }
+
+  &-cooldown {
+    @include absolute(0, 0, 100%);
+    transform: scale(1.07);
+    stroke: currentColor;
+    fill: none;
+
+    .timer {
+      stroke-width: 9px;
+    }
+  }
+
+  @include modifier(flash) {
+    color: #ffb72c;
+  }
+
+  @include modifier(dot) {
+    color: #fe603a;
+  }
+
+  @include modifier(teleport) {
+    color: #ce64b4;
+  }
+
+  @include modifier(heal) {
+    color: #88c800;
+  }
+
+  @include modifier(haste) {
+    color: #3dbfd9;
+  }
+
+  @include modifier(exhaust) {
+    color: #cb6412;
+  }
+
+  @include modifier(barrier) {
+    color: #f8e71c;
+  }
+
+  @include modifier(smite) {
+    color: #cb6412;
+  }
+}
+
+@keyframes spell-blink {
+  50% {
+    opacity: .3;
+  }
+}

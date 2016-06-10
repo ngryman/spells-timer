@@ -11,9 +11,13 @@ export default class SpellItem extends Component {
 
   renderContent(spell) {
     const time = spell.counting ? <span className="spell-time">{spell.cooldown}</span> : null
+    const classNames = classnames('spell-content', {
+      time60: spell.cooldown <= 60 && spell.cooldown > 30,
+      time30: spell.cooldown <= 30
+    })
 
     return (
-      <div className="spell-content">
+      <div className={classNames}>
         {time}
         <img className="spell-icon" src={`img/${spell.id}.svg`} />
       </div>
@@ -25,7 +29,7 @@ export default class SpellItem extends Component {
 
     return (
       <svg className="spell-cooldown"
-        viewBox="-3 -3 106 106"
+        viewBox="-5 -5 110 110"
         vectorEffect="non-scaling-stroke"
         strokeLinecap="round">
         {drawCooldownPie(spell)}
@@ -64,8 +68,6 @@ const drawCooldownPie = (spell) => {
 
   return (
     <g transform={`translate(${r}, ${r})`}>
-      <path className="pie" d={`M 0 0 v ${-r} A ${r} ${r} 1 ${m} 1 ${x} ${y} z`}></path>
-      <circle className="track" cx="0" cy="0" r={r}></circle>
       <path className="timer" d={`M 0 ${-r} A ${r} ${r} 1 ${m} 1 ${x} ${y}`}></path>
     </g>
   )
