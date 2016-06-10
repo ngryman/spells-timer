@@ -37,17 +37,18 @@ export default class WarningSpeech extends Component {
   componentDidUpdate() {
     const spells = this.state.spells
     this.sayWarningMessages(spells)
-    this.sayRandomSupportMessage(spells)
+    // this.sayRandomSupportMessage(spells)
   }
 
   render() { return null }
 
   sayWarningMessages(spells) {
-    let text = spells
+    const text = spells
       .map(::this.createMessage)
       .join(' ')
 
     this.speech.speak(text)
+    console.log(text)
   }
 
   sayRandomSupportMessage(spells) {
@@ -67,7 +68,7 @@ export default class WarningSpeech extends Component {
     if (0 === spell.cooldown)
       message += ' now'
     message += ' available'
-    if (0 !== spell.cooldown)
+    if (spell.cooldown > 0)
       message += ` in ${spell.cooldown} seconds`
     message += '.'
 
